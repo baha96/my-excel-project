@@ -2,3 +2,9 @@ git checkout -b 'webpack'           - создание ветки и сразу 
 git checkout master                 - меняю ветки
 git add .                           - добавить файлы с корня
 commit -m 'create webpack config'   - коммит
+
+
+процесс добавление
+git add .                           - добавить файлы с корня
+commit -m 'end'                     - коммит
+git push -u origin css              - пушим все ветку, css это ветка
