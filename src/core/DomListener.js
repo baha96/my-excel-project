@@ -7,7 +7,7 @@ export class DomListener {
     this.listeners = listeners;
   }
   initDomListeners() {
-    console.log(this.listeners);
+    console.log('initDomListeners listeners', this.listeners);
   }
   removeDomListeners() {
 

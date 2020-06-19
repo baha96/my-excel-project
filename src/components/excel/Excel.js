@@ -1,10 +1,13 @@
 import {$} from '@core/dom';
 
 export class Excel {
+  // selector это - #app
+  // options это обьект в котором есть components
   constructor(selector, options) {
     this.$el = $(selector);
     this.components = options.components || [];
   }
+
   getRoot() {
     const $root = $.create('div', 'excel');
     this.components = this.components.map(Component => {
