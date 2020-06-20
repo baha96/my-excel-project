@@ -1,4 +1,4 @@
-git checkout -b 'webpack'           - создание ветки и сразу переключаемся
+git checkout -b "webpack"           - создание ветки и сразу переключаемся
 git checkout master                 - меняю ветки
 git add .                           - добавить файлы с корня
 git commit -m "create webpack config"   - коммит
