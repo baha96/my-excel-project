@@ -13,7 +13,11 @@
     "eol-last": "off",
     "linebreak-style": "off",
     "arrow-parens": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "no-empty": "off",
+    "no-dupe-else-if": "off",
+    "curly": "off",
+    "no-const-assign": "off"
   },
   "extends": ["eslint:recommended", "google"]
 }

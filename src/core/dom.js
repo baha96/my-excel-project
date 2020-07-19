@@ -4,6 +4,9 @@ class Dom {
       ? document.querySelector(selector)
       : selector;
   }
+  get data() {
+    return this.$el.dataset;
+  }
   html(html) {
     if (typeof html === 'string') {
       this.$el.innerHTML = html;
@@ -27,6 +30,19 @@ class Dom {
     else this.$el.appendChild(node);
 
     return this;
+  }
+  parent(selector) {
+    // closest пойдет дальше искать selector по родителям, пока не найдет его
+    return $(this.$el.closest(selector));
+  }
+  getCoords() {
+    return this.$el.getBoundingClientRect();
+  }
+  findAll(selector) {
+    return this.$el.querySelectorAll(selector);
+  }
+  css(styles = {}) {
+    Object.keys(styles).forEach(key => this.$el.style[key] = styles[key]);
   }
 }
 
