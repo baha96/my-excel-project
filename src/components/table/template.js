@@ -1,29 +1,38 @@
+// Алфавит от А до Z
 const CODES = {
   A: 65,
   Z: 90
 };
 
-function toCell() {
+function toCell(_, col) {
   return `
-    <div class="cell" contenteditable></div>
+    <div class="cell" data-col="${col}" contenteditable></div>
   `;
 }
 
-function toColumn(el) {
+function toColumn(el, col) {
   return `
-    <div class="column">${el}</div>
+    <div class="column" data-type="resizable" data-col="${col}">
+        ${el}
+        <div class="col-resize" data-resize="col"></div>
+    </div>
   `;
 }
 
 function createRow(i, content) {
+  const resizer = i ? '<div class="row-resize" data-resize="row"></div>' : '';
   return `
-    <div class="row">
-        <div class="row-info">${i ? i : ''}</div>
+    <div class="row" data-type="resizable">
+        <div class="row-info">
+            ${i ? i : ''}
+            ${resizer}
+        </div>
         <div class="row-data">${content}</div>
     </div>
   `;
 }
 
+// Парсим кодированную алфавит
 function toChar(_, index) {
   return String.fromCharCode(CODES.A + index);
 }
@@ -31,6 +40,7 @@ function toChar(_, index) {
 export function createTable(rowsCount = 15) {
   const colsCount = CODES.Z - CODES.A + 1;
   const rows = [];
+  // Рисуем Алфавит на фронте
   const cols = new Array(colsCount)
       .fill('')
       .map(toChar)
