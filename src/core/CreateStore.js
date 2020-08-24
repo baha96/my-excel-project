@@ -5,10 +5,11 @@ export class CreateStore {
     this.rootReducer = rootReducer;
   }
   subscribe(fn) {
-    this.listeners.push(fn);
+    const vm = this;
+    vm.listeners.push(fn);
     return {
       unsubscribe() {
-        this.listeners = this.listeners.filter(l => l !== fn);
+        vm.listeners = vm.listeners.filter(l => l !== fn);
       }
     };
   }

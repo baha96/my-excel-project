@@ -1,12 +1,12 @@
 import {$} from '@core/dom';
 import {Emitter} from '@core/Emitter';
 import {StoreSubscriber} from '@core/StoreSubscriber';
+import * as actions from '@/store/action';
 
 export class Excel {
   // selector это - #app
   // options это обьект в котором есть components
-  constructor(selector, options) {
-    this.$el = $(selector);
+  constructor(options) {
     this.components = options.components || [];
     this.emitter = new Emitter();
     this.store = options.store;
@@ -30,10 +30,10 @@ export class Excel {
     return $root;
   }
 
-  render() {
-    this.$el.append(this.getRoot());
+  init() {
     this.subscriber.subscribeComponents(this.components);
     this.components.forEach(component => component.init());
+    this.store.dispatch(actions.apllyLastVisit());
   }
   destroy() {
     this.subscriber.unsubscribeFromStore();
