@@ -3,13 +3,14 @@ import {$} from '@core/dom';
 import {changeTitle} from '@/store/action';
 import {defaultTitle} from '@/constants';
 import {debounce} from '@core/utils';
+import {ActiveRoute} from '@core/router/ActiveRoute';
 
 export class Header extends ExcelComponents {
   static className = 'excel__header';
   constructor($root, options) {
     super($root, {
       name: 'Header',
-      listeners: ['input'],
+      listeners: ['input', 'click'],
       ...options
     });
   }
@@ -22,18 +23,27 @@ export class Header extends ExcelComponents {
     return `
     <input type="text" class="input" value="${title}"/>
     <div>
-        <div class="button">
-            <span class="material-icons">delete</span>
+        <div class="button" data-button="delete">
+            <span class="material-icons" data-button="delete">delete</span>
         </div>
-        <div class="button">
+        <a href="#/" class="button">
             <span class="material-icons">exit_to_app</span>
-        </div>
+        </a>
     </div>
 `;
   }
   onInput(e) {
-    console.log(e.target);
     const $target= $(e.target);
     this.$dispatch(changeTitle($target.text()));
+  }
+  onClick(e) {
+    const $target = $(e.target);
+    if ($target.data.button === 'delete') {
+      const decision = confirm('Вы действительно хотите удалить таблицу?');
+      if (decision) {
+        localStorage.removeItem(`excel:${ActiveRoute.param}`);
+        ActiveRoute.navigate('');
+      }
+    }
   }
 }
