@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack --mode production"
   },
@@ -33,7 +34,9 @@
     "eslint": "^7.0.0",
     "eslint-config-google": "^0.14.0",
     "eslint-loader": "^4.0.2",
+    "eslint-plugin-jest": "^23.20.0",
     "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.4.2",
     "mini-css-extract-plugin": "^0.9.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",

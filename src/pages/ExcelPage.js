@@ -1,5 +1,5 @@
 import {Page} from '@core/Page';
-import {CreateStore} from '@core/CreateStore';
+import {CreateStore} from '@core/store/CreateStore';
 import {rootReducer} from '@/store/rootReducer';
 import {normalizeInitialState} from '@/store/initialState';
 import {debounce, storage} from '@core/utils';

@@ -9,7 +9,6 @@ export class DomListener {
     this.listeners = listeners;
   }
   initDomListeners() {
-    // console.log('initDomListeners listeners', this.listeners, this);
     this.listeners.forEach(listener => {
       const method = getMethodName(listener);
       if (!this[method]) throw new Error(`Не создан метод ${method} в компоненте ${this.name}`);

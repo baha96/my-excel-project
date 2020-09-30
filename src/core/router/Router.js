@@ -1,5 +1,5 @@
-import {$} from '@core/dom';
-import {ActiveRoute} from '@core/router/ActiveRoute';
+import {$} from '../dom';
+import {ActiveRoute} from './ActiveRoute';
 
 export class Router {
   constructor(selector, routes) {
@@ -22,7 +22,6 @@ export class Router {
     }
     this.$placeholder.clear();
     const Page = checkComponent(this.routes);
-    console.log('ActiveRoute.param', ActiveRoute.param);
     this.page = new Page(ActiveRoute.param);
     this.$placeholder.append(this.page.getRoot());
     this.page.afterRender();
